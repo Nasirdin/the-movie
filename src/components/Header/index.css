@@ -1,0 +1,136 @@
+.header {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px 0;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+.burger {
+  display: none;
+  width: 30px;
+  height: 2px;
+  background-color: #fff;
+  margin: 0 20px 10px auto;
+  position: relative;
+  transition: 0.5s all;
+}
+.burger::after,
+.burger::before {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: inherit;
+  content: "";
+  left: 0;
+}
+.burger::after {
+  top: 10px;
+}
+.burger::before {
+  top: 5px;
+}
+.activeB::before {
+  display: none;
+}
+.activeB::after {
+  transform: rotate(90deg);
+  top: 0;
+}
+.activeB {
+  transform: rotate(-45deg);
+  top: 5px;
+}
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.headerLogo {
+  font-weight: 700;
+  color: #fff;
+  font-size: 24px;
+  text-decoration: none;
+}
+.headerItems {
+  display: flex;
+  justify-content: center;
+}
+.headerItem {
+  margin-left: 20px;
+}
+.headerItem:first-child {
+  margin-left: 0;
+}
+.headerLink {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.headerLink:hover {
+  color: #999;
+}
+.searchInput {
+  padding: 10px;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  width: 300px;
+  border-radius: 10px;
+}
+.headerForm {
+  position: relative;
+}
+.headerForm button {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translate(0, -50%);
+  background-color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.headerForm button svg {
+  font-size: 20px;
+}
+
+@media (max-width: 770px) {
+  .headerLogo {
+    font-size: 18px;
+  }
+  .headerLink {
+    font-size: 16px;
+  }
+  .headerItems {
+    flex-direction: column;
+  }
+  .headerItem {
+    margin-left: 0;
+  }
+  .searchInput {
+    width: 200px;
+    padding: 5px 10px;
+    font-size: 16px;
+  }
+  .headerForm button svg {
+    font-size: 16px;
+  }
+}
+@media (max-width: 485px) {
+  .header .container {
+    flex-direction: column;
+    display: none;
+  }
+  .burger {
+    display: block;
+  }
+  .header .container.burgerActive {
+    display: flex;
+  }
+  .headerLogo,
+  .headerItems {
+    margin-bottom: 10px;
+  }
+}

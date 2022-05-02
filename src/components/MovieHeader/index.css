@@ -1,0 +1,112 @@
+.movieListHeader {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: relative;
+  padding: 150px 0 70px;
+  overflow: hidden;
+}
+.movieBackgrounImg {
+  min-width: 100%;
+  min-height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.movieImgBlock {
+  max-width: 300px;
+  min-width: 200px;
+  max-height: 450px;
+  margin-right: 50px;
+}
+.moviePosterImg {
+  width: 100%;
+  height: auto;
+}
+
+.movieTitile {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.movieGenresAndRating {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.movieGenres {
+  display: flex;
+  justify-content: flex-start;
+}
+.movieGenre {
+  margin-left: 20px;
+  text-transform: capitalize;
+  font-weight: 500;
+  color: #9f9f9f;
+}
+.movieRating {
+  background-color: #999;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: relative;
+}
+.movieRating.great {
+  border: 3px solid #00ff51;
+}
+.movieRating.good {
+  border: 3px solid #ffcf23;
+}
+.movieRating.bad {
+  border: 3px solid red;
+}
+.movieRating p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 14px;
+  transform: translate(-50%, -50%);
+}
+.movieTagLine {
+  font-size: 20px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.movieDiscription {
+  margin-bottom: 20px;
+}
+
+.movieCompanyTitle {
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+.movieProductionCompanies {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.movieProductionCompany {
+  margin-right: 20px;
+  font-size: 18px;
+}
+.fiBookMark {
+  font-size: 34px;
+  cursor: pointer;
+}
+.fiBookMark.active{
+    color: #00ff51;
+}
+
+
+@media (max-width: 770px) {
+    .movieListHeader .container {
+        flex-direction: column;
+    }
+    .movieImgBlock{margin-bottom: 20px;}
+}
