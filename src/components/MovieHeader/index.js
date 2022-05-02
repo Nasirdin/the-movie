@@ -12,9 +12,10 @@ const MovieHeader = ({ movieId }) => {
   const localStorageItemLike = localStorage.getItem(`like`);
   const localStorageItem = localStorage.getItem(`thisMovie${movieId}`);
   const jsonToObjectMovie = JSON.parse(localStorageItem);
-  useEffect(() => {
+  console.log(movieId);
+  useEffect(() => {;
     if (!localStorageItemLike) {
-      return;
+      
     } else {
       const jsonToObjectLikeMovie = JSON.parse(localStorageItemLike);
       jsonToObjectLikeMovie.filter((e) => {
@@ -32,11 +33,14 @@ const MovieHeader = ({ movieId }) => {
           url: BASE_URL + "movie/" + movieId + "?api_key=" + API_KEY + LANGUAGE,
         }).then(({ data }) => {
           setMovie(data);
+          console.log(data);
           localStorage.setItem(
             `thisMovie${movieId}`,
             `${JSON.stringify(data)}`
           );
-        });
+        }).catch((e) => {
+          console.log(e);
+        })
       } else if (jsonToObjectMovie.id * 1 === movieId) {
         setMovie(jsonToObjectMovie);
       }
