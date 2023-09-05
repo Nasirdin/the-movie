@@ -5,23 +5,19 @@ import { FiBookmark } from "@react-icons/all-files/fi/FiBookmark";
 import "./index.css";
 
 const MovieHeader = ({ movieId }) => {
-
-
   const [movie, setMovie] = useState();
   const [saved, setSaved] = useState(false);
   const localStorageItemLike = localStorage.getItem(`like`);
   const localStorageItem = localStorage.getItem(`thisMovie${movieId}`);
   const jsonToObjectMovie = JSON.parse(localStorageItem);
-  console.log(movieId);
-  useEffect(() => {;
+  useEffect(() => {
     if (!localStorageItemLike) {
-      
     } else {
       const jsonToObjectLikeMovie = JSON.parse(localStorageItemLike);
       jsonToObjectLikeMovie.filter((e) => {
         if (e.id !== movieId) {
           setSaved(false);
-        } else{
+        } else {
           setSaved(true);
         }
       });
@@ -31,16 +27,17 @@ const MovieHeader = ({ movieId }) => {
         await axios({
           method: "get",
           url: BASE_URL + "movie/" + movieId + "?api_key=" + API_KEY + LANGUAGE,
-        }).then(({ data }) => {
-          setMovie(data);
-          console.log(data);
-          localStorage.setItem(
-            `thisMovie${movieId}`,
-            `${JSON.stringify(data)}`
-          );
-        }).catch((e) => {
-          console.log(e);
         })
+          .then(({ data }) => {
+            setMovie(data);
+            localStorage.setItem(
+              `thisMovie${movieId}`,
+              `${JSON.stringify(data)}`
+            );
+          })
+          .catch((e) => {
+            console.log(e);
+          });
       } else if (jsonToObjectMovie.id * 1 === movieId) {
         setMovie(jsonToObjectMovie);
       }
